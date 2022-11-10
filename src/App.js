@@ -1,14 +1,7 @@
 import './App.css';
 import { useState } from 'react';
-import Input from './components/Input';
+import UserInput from './components/UserInput';
 import TodoList from './components/TodoList';
-// При загрузке страницы нужно вывести список всех todos.
-// Реализовать создание новых задач. 
-// При создании туду нужно обновить стейт
-// Реализовать изменение статуса todo при клике по todo item. При изменении на complited статуса, поменять цвет item на зеленый. Изменение статуса должно работать как toggle.  
-// При изменении статуса нужно обновить ui и стейт
-// Реализовать удаление todo
-// Обновление UI и стейта
 
 function App() {
   const [todos,setTodos] = useState([{
@@ -50,7 +43,7 @@ function App() {
   }
   return (
     <div className="App">
-      <Input addTodo = {addTodo}/>
+      <UserInput addTodo = {addTodo}/>
       <TodoList todos={todos} delTodo = {deleteTodo} changeStatus = {changeTodoStatus} />
     </div>
   );
