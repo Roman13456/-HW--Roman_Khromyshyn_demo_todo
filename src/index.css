@@ -6,8 +6,34 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+ul{
+  padding: 0;
+  margin: 0;
+  max-width: 300px;
+  width: 100%;
+  margin: auto;
+}
+.popup{
+  height: 300px;
+  width: 300px;
+  position: fixed;
+  background: wheat;
+  border: 1px solid brown;
+  border-radius:6px;
+  inset: 0;
+  margin: auto;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.completed{
+  background-color: green;
+}
+li{
+  display: flex;
+  justify-content: space-between;
+}
+li div{
+  margin-right: 20px;
 }
