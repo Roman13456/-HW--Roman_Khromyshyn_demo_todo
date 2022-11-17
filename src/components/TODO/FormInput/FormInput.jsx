@@ -1,17 +1,17 @@
 import { useState } from 'react';
-function Input({addTodo}) {
+function FormInput({addTodo}) {
   const [val,setInput] = useState("")
   function addNewTodo(){
     addTodo(val);
     setInput("")
   }
   return (
-    <div style={{display:"flex",justifyContent:"center"}}>
+    <form style={{display:"flex",justifyContent:"center"}}>
         <input value={val} onChange={(e)=>setInput(e.target.value)}></input>
         <button type='button' onClick={addNewTodo}>Add</button>
-    </div>
+    </form>
     
   );
 }
 
-export default Input;
+export default FormInput;
