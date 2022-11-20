@@ -1,4 +1,4 @@
-const TODO_URL = 'http://localhost:3001/todos'
+const TODO_URL = 'http://localhost:3004/todos'
 
 export async function getTodos() {
     const res = await fetch(TODO_URL);
