@@ -2,7 +2,10 @@ import { useState } from 'react';
 function FormInput({addTodo}) {
   const [val,setInput] = useState("")
   function addNewTodo(){
-    addTodo(val);
+    addTodo({
+      desc: val,
+      status: false
+    });
     setInput("")
   }
   return (

@@ -8,18 +8,20 @@ const initialState = {
 export default function todoReducer(state=initialState,{type,payload}){
     console.log(type)
     switch(type){
-        
         case ADD_TODOS:
+            console.log(payload,state)
             return {...state,todos:[...payload]}
         case ADD_TODO:
             return {...state,todos:[...state.todos,payload]}
         case REMOVE_TODO:
-            const todoIdx = state.todos.findIndex((e)=>e.id===payload)
-            const todosCopy = [...state.todos]
-            todosCopy.splice(todoIdx,1)
-            return {...state,todos:[...todosCopy]}
+            return {...state,todos:state.todos.filter(todo=>todo.id!==payload)}
         case CHANGE_TODO:
-            return {...state,todos:payload}
+            return {...state,todos:state.todos.map((todo)=>{
+                if(todo.id===payload.id){
+                    return payload
+                }
+                return todo
+            })}
         default:
             return state
     }

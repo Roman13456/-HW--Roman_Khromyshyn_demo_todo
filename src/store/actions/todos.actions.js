@@ -1,3 +1,4 @@
+import {getTodos, createTodo ,deleteTodo ,patchTodo} from '../../components/TODO/todosApi'
 export const ADD_TODOS = 'ADD_TODOS'
 export const ADD_TODO = 'ADD_TODO'
 export const REMOVE_TODO = 'REMOVE_TODO'
@@ -26,5 +27,35 @@ function changeTodoAction(payload){
         payload
     }
 }
+export function addTodosRequestAction(){
+    return async (dispatch)=>{
+        const todos = await getTodos()
+        console.log(todos)
+        dispatch(addTodosAction(todos))
+    }
+}
+export function addTodoRequestAction(todo){
+    return async (dispatch)=>{
+        const todoInfo = await createTodo(todo)
+        dispatch(addTodoAction(todoInfo))
+    }
+}
+export function removeTodoRequestAction(id){
+    return async (dispatch)=>{
+        await deleteTodo(id)
+        dispatch(removeTodoAction(id))
+    }
+}
+export function changeTodoRequestAction(id){
+    return async (dispatch,getState)=>{
+        const state = getState()
+        const todoInfo = state.Todo.todos.find((todo)=>todo.id ===id)//у нас ведь todos хранит стейт с todos
+        todoInfo.status = !todoInfo.status
+        const todo = await patchTodo(todoInfo)
+        dispatch(changeTodoAction(todo))
+    }
+}
+
+
 export {addTodosAction,addTodoAction,removeTodoAction,changeTodoAction}
 
