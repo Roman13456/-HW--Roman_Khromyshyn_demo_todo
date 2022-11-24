@@ -46,6 +46,13 @@ export function removeTodoRequestAction(id){
         dispatch(removeTodoAction(id))
     }
 }
+export function patchTodoRequestAction(obj){
+    return async (dispatch)=>{
+        const params = obj
+        const todo = await patchTodo(params)
+        dispatch(changeTodoAction(todo))
+    }
+}
 export function changeTodoRequestAction(id){
     return async (dispatch,getState)=>{
         const state = getState()

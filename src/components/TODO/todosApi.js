@@ -4,7 +4,10 @@ export async function getTodos() {
     const res = await fetch(TODO_URL);
     return res.json();
   }
-  
+  export async function getTodo(id) {
+    const res = await fetch(`${TODO_URL}/${id}`);
+    return res.json();
+  }
   export async function createTodo(todo) {
     const res = await fetch(TODO_URL, {
       method: 'POST',
