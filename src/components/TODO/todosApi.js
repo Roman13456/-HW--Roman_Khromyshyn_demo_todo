@@ -26,6 +26,7 @@ export async function getTodos() {
     return res.json()
   }
     export async function patchTodo(props) {
+      console.log(props)
         const res = await fetch(`${TODO_URL}/`+props.id, {
           method: 'PATCH',
           body:JSON.stringify(props),
